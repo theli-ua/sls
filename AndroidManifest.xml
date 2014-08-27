@@ -223,6 +223,13 @@
                 android:exported="true"
                 android:enabled="true">
             <intent-filter>
+                <action android:name="com.soundcloud.android.playback.toggleplayback" />
+                <action android:name="com.soundcloud.android.playback.playcurrent" />
+                <action android:name="com.soundcloud.android.playback.pause" />
+                <action android:name="com.soundcloud.android.playback.seek" />
+                <action android:name="com.soundcloud.android.playback.reset" />
+                <action android:name="com.soundcloud.android.playback.stop" />
+                <action android:name="com.soundcloud.android.playlistchanged" />
                 <action android:name="com.amazon.mp3.metachanged" />
                 <action android:name="com.amazon.mp3.playstatechanged" />
             </intent-filter>

@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import com.adam.aslfms.util.Track;
 import com.adam.aslfms.util.Util;
+import java.util.*;
 
 /**
  * A BroadcastReceiver for intents sent by the Amazon Music music player
@@ -38,6 +39,19 @@ public class AmazonMP3Receiver extends AbstractPlayStatusReceiver {
 
     static final String TAG = "AmazonMP3Receiver";
     static private Track track = null;
+
+    public static void dumpIntent(Bundle bundle){
+        if (bundle != null) {
+            Set<String> keys = bundle.keySet();
+            Iterator<String> it = keys.iterator();
+            Log.e(TAG,"Dumping Intent start");
+            while (it.hasNext()) {
+                String key = it.next();
+                Log.e(TAG,"[" + key + "=" + bundle.get(key)+"]");
+            }
+            Log.e(TAG,"Dumping Intent end");
+        }
+    }
 
     @Override
     protected void parseIntent(Context ctx, String action, Bundle bundle) {
@@ -78,6 +92,11 @@ public class AmazonMP3Receiver extends AbstractPlayStatusReceiver {
             b.setTrack(bundle.getString("com.amazon.mp3.track"));
 
             track = b.build();
+        }
+        else 
+        {
+            dumpIntent(bundle);
+
         }
 
     }
